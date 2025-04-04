@@ -1,0 +1,19 @@
+.card {
+  background-color: rgb(221, 255, 141);
+  max-width: 200px;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-family: sans-serif;
+  padding: 5px;
+  text-align: center;
+  display: inline-block;
+  margin: 10px;
+  min-width: 200px;
+}
+
+.card img {
+  max-width: 200px;
+  margin: auto;
+  border-radius: 10px;
+  border: 1px solid yellow;
+}
