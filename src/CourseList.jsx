@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import image1 from "./assets/img1.jpg";
 import image2 from "./assets/img2.jpg";
 import image3 from "./assets/img3.jpg";
 import Course from "./Course";
 
 function CourseList() {
-  const courses = [
+  const [courses, setCourses] = useState([
     {
       id: 1,
       name: "HTML",
@@ -42,18 +42,26 @@ function CourseList() {
       price: 599,
       hide: true,
     },
-  ];
+  ]);
+
+  function handleDelete(id) {
+    const newCourses = courses.filter((course) => course.id != id);
+    setCourses(newCourses);
+  }
 
   courses.sort((b, a) => a.price - b.price);
   courses.sort((a, b) => a.price - b.price);
 
   const courseList = courses.map((course, index) => (
     <Course
-      key={index} // It's a good idea to use a unique key prop
+      //key={index} // It's a good idea to use a unique key prop
+      key={course.id}
       name={course.name}
       image={course.image}
       hide={course.hide}
       price={course.price}
+      id={course.id}
+      delete={handleDelete}
     />
   ));
 

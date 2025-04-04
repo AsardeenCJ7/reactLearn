@@ -26,12 +26,15 @@ import image1 from "./assets/img1.jpg";
 
 function Course(props) {
   let [Purchased, setPurchased] = useState(false);
+  const [discount, setDiscount] = useState(props.price);
   // let Purchased = false;  this is local variable an I should change this state variable above I chnaged
 
-  function buyCourse(discount, e) {
+  function buyCourse(amount, e) {
     console.log(props.name, " Purchased with ", discount, "%");
     console.log(e);
-    setPurchased = true;
+    // setPurchased = true;
+    setPurchased(true);
+    setDiscount(discount - amount);
     console.log("Purchased value is : ", Purchased);
   }
 
@@ -42,16 +45,18 @@ function Course(props) {
         <div className="card">
           <img src={props.image} alt="" />
           <h2>{props.name}</h2>
-          <p>{props.price}</p>
+          <p>{discount}</p>
           <button
             onClick={(event) => {
               buyCourse(20, event);
               // console.log(event);
             }}
           >
-            Buy Now
+            {Purchased ? "Already purchased" : "Get it Now"}
           </button>
-          <p>{Purchased ? "Already purchased" : "Get it Now"}</p>
+
+          <button onClick={() => props.delete(props.id)}>Delete</button>
+          <p></p>
         </div>
       )
     );
