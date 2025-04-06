@@ -1,0 +1,46 @@
+{
+  "courses": [
+    {
+      "id": 1,
+      "name": "HTML",
+      "image": "http://localhost:3000/assets/img1.jpg",
+      "price": 199,
+      "hide": true
+    },
+    {
+      "id": 2,
+      "name": "CSS",
+      "image": "http://localhost:3000/assets/img2.jpg",
+      "price": 199,
+      "hide": true
+    },
+    {
+      "id": 3,
+      "name": "JS",
+      "image": "http://localhost:3000/assets/img3.jpg",
+      "price": 399,
+      "hide": true
+    },
+    {
+      "id": 4,
+      "name": "React JS",
+      "image": "http://localhost:3000/assets/img1.jpg",
+      "price": 599,
+      "hide": true
+    },
+    {
+      "id": 5,
+      "name": "React JS Part -2",
+      "image": "http://localhost:3000/assets/img2.jpg",
+      "price": 599,
+      "hide": true
+    },
+    {
+      "id": 6,
+      "name": "React JS Part - 3",
+      "image": "http://localhost:3000/assets/img3.jpg",
+      "price": 599,
+      "hide": true
+    }
+  ]
+}

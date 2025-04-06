@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import propTypes from "prop-types";
 // import Styles from "./Course.module.css";
-import image1 from "./assets/img1.jpg";
+import image1 from "/assets/img1.jpg";
 
 // Component.defaultProps not supported
 // function Course({
