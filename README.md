@@ -1,12 +1,57 @@
-# React + Vite
+# 🚀 My React Learning Journey
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to my React practice repository! This is where I explore, experiment, and enhance my skills with React — one of the most powerful libraries for building user interfaces.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📚 Completed Projects
 
-## Expanding the ESLint configuration
+✅ Beginner Component Projects  
+✅ Conditional Rendering Examples  
+✅ Props and State Practice  
+✅ Button Click Handlers  
+✅ Dynamic Course Cards  
+✅ JSON Data Integration  
+✅ Image Rendering from `public/` and `src/assets`
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🔁 Current Focus: Practice & Reminders
+
+I'm currently diving deeper into:
+
+- 🔄 **useState**, **useEffect** — mastering React Hooks
+- 📦 Working with **JSON data** from a local server
+- 📸 Loading and managing **images dynamically**
+- 🧠 Building **reminder-based apps** (To-Dos, Course Status, Purchases)
+- ♻️ Handling conditional rendering and state changes effectively
+- 🚫 Understanding `props.hide` and conditional layouts
+
+---
+
+## 📌 Goals
+
+- ✅ Build 10+ small projects
+- ⏱ Create a working Reminder App
+- 🧪 Practice all major hooks
+- 🎯 Deploy one complete React project
+- 🧩 Understand component reusability deeply
+
+---
+
+## 📂 Folder Structure
+
+```bash
+reactio/
+├── reactLearn/
+│   ├── src/
+│   │   ├── assets/
+│   │   │   ├── img1.jpg
+│   │   │   ├── img2.jpg
+│   │   ├── components/
+│   │   │   ├── Course.jsx
+│   │   │   ├── Reminder.jsx
+│   │   ├── App.jsx
+│   ├── public/
+│   │   ├── dummyData.json
+```
