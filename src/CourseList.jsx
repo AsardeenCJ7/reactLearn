@@ -12,8 +12,13 @@ function CourseList() {
   // const [error, setError] = useState(null);
   // const [courses, setCourses] = useState(null);
 
-  const { dummy, courses, error, posts } = useFetch(); // order illama {} ithukulla destructure pannalam
-  // const [courses, dummy, posts, error] = useFetch(); // This is also good
+  // const { dummy, data, error, posts } = useFetch(
+  //   "http://localhost:3000/courses"
+  // ); // order illama {} ithukulla destructure pannalam
+  const [courses, dummy, posts, error, setData] = useFetch(
+    "http://localhost:3000/courses"
+  );
+  // This is also good
   // but oru list eduthukittomna kattayam return pannura same order la naanga atha destructuring saiyyanum
   // useFetch Return Order Mismatch
   // Error Will show same return order only destructure
@@ -89,9 +94,38 @@ useEffect(() => {...}, [count])	Runs on first render and when count changes.
   //   },
   // ]);
 
+  // function handleDelete(id) {
+  //   const newCourses = courses.filter((course) => course.id != id);
+  //   setCourses(newCourses);
+  // }  Courses Irukkum Poathu after fetch common Hooks it commented
+
+  // Illanu sonna naama array destructuring saithu iruntha antha order la Example kku
+  //  return [data, dummy, posts, error];
+  //  const [courses, dummy, posts, error] = useFetch();   ippo data return pannurathu courses la assign aahi irukum
+
   function handleDelete(id) {
     const newCourses = courses.filter((course) => course.id != id);
-    setCourses(newCourses);
+    setData(newCourses); //This is not proper way because this is common dataFetched
+
+    // I'm facing an issue while fetching the course
+    // list using the useFetch custom hook.
+    // The handleDelete function doesn't work properly.
+    // Can I use setData() to update the list after deletion?
+    //  I'm concerned because setData() is part of the shared state inside useFetch, and using it might affect other components.
+    // Should I instead create a separate useState for courses and setCourses in the CourseList component to handle deletion locally?
+
+    // const [fetchedCourses, dummy, posts, error] = useFetch(...);
+    // const [courses, setCourses] = useState(null);
+
+    // useEffect(() => {
+    //   if (fetchedCourses) {
+    //     setCourses(fetchedCourses);
+    //   }
+    // }, [fetchedCourses]);
+
+    // function handleDelete(id) {
+    //   setCourses(courses.filter(course => course.id !== id));
+    // }
   }
 
   // courses.sort((b, a) => a.price - b.price);

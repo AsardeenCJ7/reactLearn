@@ -17,7 +17,7 @@ function App() {
       <Course name="Data Science" price="$500" image={image2} /> */}
       {/* Conditional Rendering -  */}
 
-      <CourseList />
+      {/* <CourseList /> */}
 
       {/* <Footer /> */}
     </>
