@@ -2,63 +2,77 @@ import React, { useEffect, useState } from "react";
 import image1 from "/assets/img1.jpg";
 import image2 from "/assets/img2.jpg";
 import image3 from "/assets/img3.jpg";
+import gif from "/assets/load.gif";
 import Course from "./Course";
 
 function CourseList() {
   // here a list as useState working......
   const [dummy, setDummy] = useState(true);
   const [posts, setPosts] = useState([]);
-  const [courses, setCourses] = useState([
-    //   {
-    //     id: 1,
-    //     name: "HTML",
-    //     image: image1,
-    //     price: 199,
-    //     hide: true,
-    //   },
-    //   {
-    //     id: 2,
-    //     name: "CSS",
-    //     image: image2,
-    //     price: 199,
-    //     hide: true,
-    //   },
-    //   {
-    //     id: 3,
-    //     name: "JS",
-    //     image: image3,
-    //     price: 399,
-    //     hide: true,
-    //   },
-    //   {
-    //     id: 4,
-    //     name: "React JS",
-    //     image: image1,
-    //     price: 599,
-    //     hide: true,
-    //   },
-    //   {
-    //     id: 5,
-    //     name: "React JS",
-    //     image: image1,
-    //     price: 599,
-    //     hide: true,
-    //   },
-    // ]);
-  ]);
+  const [error, setError] = useState(null);
+  const [courses, setCourses] = useState(null);
+  //   {
+  //     id: 1,
+  //     name: "HTML",
+  //     image: image1,
+  //     price: 199,
+  //     hide: true,
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "CSS",
+  //     image: image2,
+  //     price: 199,
+  //     hide: true,
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "JS",
+  //     image: image3,
+  //     price: 399,
+  //     hide: true,
+  //   },
+  //   {
+  //     id: 4,
+  //     name: "React JS",
+  //     image: image1,
+  //     price: 599,
+  //     hide: true,
+  //   },
+  //   {
+  //     id: 5,
+  //     name: "React JS",
+  //     image: image1,
+  //     price: 599,
+  //     hide: true,
+  //   },
+  // ]);
+  // ]);
 
   useEffect(() => {
     // fetch("https://jsonplaceholder.typicode.com/posts")
-    fetch("http://localhost:3000/courses")
-      .then((response) => {
-        console.log(response);
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-        setCourses(data);
-        console.log("Image How to generate", data);
-      });
+    setTimeout(() => {
+      //ananymous function in all codes
+      fetch("http://localhost:3000/courses")
+        .then((response) => {
+          //customs error - made by me
+          // Ithu Naan Ean poadurannu sonna itha hide pannina meaning illama oru error show aahum s i use this error handling
+          if (!response.ok) {
+            throw Error("Coundn't retrive data");
+          }
+          console.log(response);
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);
+          setCourses(data);
+          console.log("Image How to generate", data);
+        })
+        .catch((error) => {
+          console.log(error.message);
+          setError(error.message);
+        });
+    }, 5000);
   }, []);
 
   // useEffect(() => {
@@ -95,7 +109,6 @@ useEffect(() => {...}, [count])	Runs on first render and when count changes.
   function handleDelete(id) {
     const newCourses = courses.filter((course) => course.id != id);
     setCourses(newCourses);
-  
   }
 
   // courses.sort((b, a) => a.price - b.price);
@@ -113,6 +126,17 @@ useEffect(() => {...}, [count])	Runs on first render and when count changes.
   //     delete={handleDelete}
   //   />
   // ));
+
+  // Itha comment pannina map function data fetch pannittu vaarathuku muthal work aahina data ethuvumea show aaahathu
+  // antha error ah handle panna intha if condition o=poattu irukkan
+  if (!courses) {
+    return (
+      <>
+        {!error && <img src={gif} />}
+        {error && <p>{error}</p>}
+      </>
+    );
+  }
 
   const courseList = courses.map((course, index) => (
     <Course
