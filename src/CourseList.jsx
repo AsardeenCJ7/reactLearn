@@ -1,16 +1,25 @@
-import React, { useEffect, useState } from "react";
 import image1 from "/assets/img1.jpg";
 import image2 from "/assets/img2.jpg";
 import image3 from "/assets/img3.jpg";
 import gif from "/assets/load.gif";
 import Course from "./Course";
+import { useFetch } from "./useFetch";
 
 function CourseList() {
   // here a list as useState working......
-  const [dummy, setDummy] = useState(true);
-  const [posts, setPosts] = useState([]);
-  const [error, setError] = useState(null);
-  const [courses, setCourses] = useState(null);
+  // const [dummy, setDummy] = useState(true);
+  // const [posts, setPosts] = useState([]);
+  // const [error, setError] = useState(null);
+  // const [courses, setCourses] = useState(null);
+
+  const { dummy, courses, error, posts } = useFetch(); // order illama {} ithukulla destructure pannalam
+  // const [courses, dummy, posts, error] = useFetch(); // This is also good
+  // but oru list eduthukittomna kattayam return pannura same order la naanga atha destructuring saiyyanum
+  // useFetch Return Order Mismatch
+  // Error Will show same return order only destructure
+
+  // const [courses, dummy, posts, error] = useFetch();
+
   //   {
   //     id: 1,
   //     name: "HTML",
@@ -48,32 +57,6 @@ function CourseList() {
   //   },
   // ]);
   // ]);
-
-  useEffect(() => {
-    // fetch("https://jsonplaceholder.typicode.com/posts")
-    setTimeout(() => {
-      //ananymous function in all codes
-      fetch("http://localhost:3000/courses")
-        .then((response) => {
-          //customs error - made by me
-          // Ithu Naan Ean poadurannu sonna itha hide pannina meaning illama oru error show aahum s i use this error handling
-          if (!response.ok) {
-            throw Error("Coundn't retrive data");
-          }
-          console.log(response);
-          return response.json();
-        })
-        .then((data) => {
-          console.log(data);
-          setCourses(data);
-          console.log("Image How to generate", data);
-        })
-        .catch((error) => {
-          console.log(error.message);
-          setError(error.message);
-        });
-    }, 5000);
-  }, []);
 
   // useEffect(() => {
   //   console.log("inside courseList useEffect");

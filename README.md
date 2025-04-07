@@ -55,3 +55,74 @@ reactio/
 │   ├── public/
 │   │   ├── dummyData.json
 ```
+
+
+
+# 🧠 Understanding Custom Hooks and Destructuring in React
+
+## 🎯 Overview
+
+This guide explains how to correctly use a custom React hook (`useFetch`) and how **destructuring** works when the hook returns multiple values.
+
+---
+
+## 🧪 What is `useFetch`?
+
+`useFetch` is a **custom hook** that performs the following tasks:
+
+- Fetches course data from a local server (`json-server`)
+- Manages the loading state (`dummy`)
+- Handles errors if the fetch fails
+- Returns the fetched data (`courses` and `posts`)
+
+---
+
+## ⚠️ Problem: Incorrect Destructuring
+
+In the current code:
+
+```js
+const [dummy, courses, error, posts] = useFetch(); ❌
+
+custom hooks return -> 
+return [courses, dummy, posts, error]; ✅
+
+This mismatch causes:
+
+dummy to incorrectly contain courses
+
+courses to become error
+
+error to become posts
+
+and so on...
+
+🧨 Result:
+Data is not displayed correctly.
+
+Logic like if (!courses) doesn't behave as expected.
+
+✅ Solution 1: Match the Destructuring Order (Array)
+Make sure the variables match the order of the returned values:
+
+// In useFetch.js
+return [courses, dummy, posts, error];
+
+// In CourseList.js
+const [courses, dummy, posts, error] = useFetch(); ✅
+
+
+✅✅ Solution 2: Use Object Destructuring (Best Practice)
+Instead of returning an array, return an object from useFetch:
+
+// In useFetch.js
+return { courses, dummy, posts, error };
+
+📝 Summary Table
+Return Type	Example	How to Destructure
+Array	[a, b, c]	const [a, b, c] = func();
+Object	{a, b, c}	const {a, b, c} = func(); ✅ Recommended
+
+Always be cautious with array destructuring – order must match!
+Use object destructuring for better code clarity.
+Helpful when returning multiple values from custom hooks.
